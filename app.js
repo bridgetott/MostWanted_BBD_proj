@@ -38,12 +38,22 @@ function mainMenu(person, people){
 
   switch(displayOption){
     case "info":
+      if(displayOption = "info"){
+        person.data = personInfo;
+      }
+      return personInfo;
     // TODO: get person's info
     break;
     case "family":
+      // if(displayOption = "family"){
+      //   parent
+      // }
     // TODO: get person's family
     break;
     case "descendants":
+      if(displayOption = "descendants"){
+        
+      }
     // TODO: get person's descendants
     break;
     case "restart":
@@ -87,6 +97,39 @@ function searchByTrait(people){
   // TODO: find the person using the name they entered
   return foundPerson;
 }
+
+function searchDescendants(person, people){
+  let firstName = promptFor("What is the person's first name?", chars);
+  let lastName = promptFor("What is the person's last name?", chars);
+
+  let findDescendants = people.filter(function(parents){
+    if(parents == null){
+        
+        //return true;
+    }
+    else{
+       //return false;
+    }
+  }
+}
+
+function findSiblings(person, people){
+  
+  let foundSiblings = people.filter(function(element){
+    if(element.parents.includes(person.parents[0]) && element.parents.includes(person.parents[1]) === person.parents){
+      return true;
+    }
+    else if(element.parents.includes(person.parents[0]) === person.parents){
+      return true;
+    }
+    else if(element.parents.includes(person.parents[0]) === null ){
+      return false;
+    }
+  })
+  return foundSiblings;
+}
+
+    
 
 // alerts a list of people
 function displayPeople(people){
