@@ -38,10 +38,7 @@ function mainMenu(person, people){
 
   switch(displayOption){
     case "info":
-      if(displayOption = "info"){
-        person.data = personInfo;
-      }
-      return personInfo;
+     
     // TODO: get person's info
     break;
     case "family":
@@ -51,9 +48,7 @@ function mainMenu(person, people){
     // TODO: get person's family
     break;
     case "descendants":
-      if(displayOption = "descendants"){
-        
-      }
+      
     // TODO: get person's descendants
     break;
     case "restart":
