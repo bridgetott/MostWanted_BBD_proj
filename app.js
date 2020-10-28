@@ -12,9 +12,8 @@ function app(people){
       searchResults = searchByName(people);
       break;
     case 'no':
-      searchType = promptFor("Select trait that you would like to search by? Enter 'gender', 'dob', 'height', 'weight', 'eyes', 'occupation', 'parents', or 'spouse'",yesNo).toLowerCase();
-      
-      // TODO: search by traits
+      // TODO: search by traits 
+      searchResults = searchByTrait(people);
       break;
       default:
     app(people); // restart app
@@ -22,7 +21,7 @@ function app(people){
   }
   
   // Call the mainMenu function ONLY after you find the SINGLE person you are looking for
-  mainMenu(searchResults[person], people);
+  mainMenu(searchResults, people);
 }
 
 // Menu function to call once you find who you are looking for
@@ -35,28 +34,16 @@ function mainMenu(person, people){
     return app(people); // restart
   }
 
-  let displayOption = prompt("Found " + person.index + " . Do you want to know their 'info', 'family', or 'descendants'? Type the option you want or 'restart' or 'quit'");
+  let displayOption = prompt("Found " + person.firstName + " " + person.lastName + " . Do you want to know their 'info', 'family', or 'descendants'? Type the option you want or 'restart' or 'quit'");
 
   switch(displayOption){
     case "info":
-      if(displayOption = "info"){
-        person.data = personInfo;
-      }
-      return personInfo;
     // TODO: get person's info
     break;
     case "family":
-      // if(displayOption = "family"){
-      //   parent
-      // }
-
     // TODO: get person's family
-    //personInfo = 
     break;
     case "descendants":
-      if(displayOption = "descendants"){
-        
-      }
     // TODO: get person's descendants
     break;
     case "restart":
@@ -82,23 +69,23 @@ function searchByName(people){
     }
   })
   // TODO: find the person using the name they entered
-  return foundPerson[0];
+  return foundPerson;
 }
 
-function searchDescendants(person, people){
-  let firstName = promptFor("What is the person's first name?", chars);
-  let lastName = promptFor("What is the person's last name?", chars);
+function searchByTrait(people){
+  let gender = promptFor("What is the person's gender?", chars)
+  let height = promptFor("What is the person's height?", chars)
 
-  let findDescendants = people.filter(function(parents){
-    if(parents == null){
-        
-        //return true;
+  let foundPerson = people.filter(function(person){
+    if(person.gender === gender && person.height === height){
+      return true;
     }
     else{
-       //return false;
+      return false;
     }
-  }
-
+  })
+  // TODO: find the person using the name they entered
+  return foundPerson;
 }
 
 // alerts a list of people
