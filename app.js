@@ -45,6 +45,8 @@ function mainMenu(person, people){
     // TODO: get person's info
     break;
     case "family":
+      findSiblings(person, people);
+      findSpouse(person, people);
       // if(displayOption = "family"){
       //   parent
       // }
@@ -110,19 +112,34 @@ function searchDescendants(person, people){
     else{
        //return false;
     }
-  }
+  })
 }
-
+function findParents(person, people){
+  let foundparents = person.filter(function(element){
+    if(element.parents.include(person.parents) === people.id)
+    return true;
+    else if(element.parents.include(person.parents) === null)
+    return false;
+  })
+}
+function findSpouse(person, people){
+  let foundSpouse = person.filter(function(element){
+    if(element.spouse.includes(person.spouse) === people.includes(spouse.id))
+    return true;
+    else if(element.spouse.includes(person.spouse) === null)
+    return false;
+  })
+}
 function findSiblings(person, people){
   
-  let foundSiblings = people.filter(function(element){
-    if(element.parents.includes(person.parents[0]) && element.parents.includes(person.parents[1]) === person.parents){
+  let foundSiblings = person.filter(function(element){
+    if(element.parents.includes(person.parents) && element.parents.includes(person.parents) === people.id){
       return true;
     }
-    else if(element.parents.includes(person.parents[0]) === person.parents){
+    else if(element.parents.includes(person.parents) === people.id){
       return true;
     }
-    else if(element.parents.includes(person.parents[0]) === null ){
+    else if(element.parents.includes(person.parents) === null ){
       return false;
     }
   })
