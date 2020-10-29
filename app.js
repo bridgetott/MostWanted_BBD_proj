@@ -85,9 +85,11 @@ function searchByName(people){
 function searchByTrait(people){
   let gender = promptFor("What is the person's gender?", chars)
   let height = promptFor("What is the person's height?", chars)
+  let height = promptFor("What is the person's eyecolor?", chars)
+  let height = promptFor("What is the person's dob?", chars)
 
   let foundPerson = people.filter(function(person){
-    if(person.gender === gender && person.height === height){
+    if(person.gender === gender && person.height === height && person.eyecolor === eyeColor && person.dob === dob){
       return true;
     }
     else{
@@ -110,7 +112,7 @@ function searchDescendants(person, people){
     else{
        //return false;
     }
-  }
+  })
 }
 
 function findSiblings(person, people){
