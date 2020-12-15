@@ -10,6 +10,7 @@ function app(people){
   switch(searchType){
     case 'yes':
       searchResults = searchByName(people);
+      mainMenu(searchResults, people)
       break;
     case 'no':
       // TODO: search by traits 
@@ -34,12 +35,12 @@ function mainMenu(person, people){
     return app(people); // restart
   }
 
+  person = person[0];
   let displayOption = prompt("Found " + person.firstName + " " + person.lastName + " . Do you want to know their 'info', 'family', or 'descendants'? Type the option you want or 'restart' or 'quit'");
 
   switch(displayOption){
     case "info":
-     
-    // TODO: get person's info
+     displayOption(person)
     break;
     case "family":
       // if(displayOption = "family"){
@@ -93,35 +94,35 @@ function searchByTrait(people){
   return foundPerson;
 }
 
-function searchDescendants(person, people){
-  let firstName = promptFor("What is the person's first name?", chars);
-  let lastName = promptFor("What is the person's last name?", chars);
-
-  let findDescendants = people.filter(function(parents){
-    if(parents == null){
-        
-        //return true;
-    }
-    else{
-       //return false;
-    }
-  }
+function searchDescendants(person, people, family){
+ let searchPersonId = person.id;
+ let descendants = people.filter(function(person){
+   if(person.parents.includes(searchPersonId)){
+     return true;
+ }
+   else{
+   return false;
+   }
+ })
+ for(let i = 0; i < descendants.length; i++){
+   family.push(descendants[i]);
+ }
+ if(descendants !== null){
+   for(let i = 0; i < descendatns.length; i++){
+     searchDescendants(decendants[i], people, family)
+   }
+ }
+ else{
+   return family;
+ }  
 }
 
-function findSiblings(person, people){
+function findSiblings(person, people, familiy){
   
-  let foundSiblings = people.filter(function(element){
-    if(element.parents.includes(person.parents[0]) && element.parents.includes(person.parents[1]) === person.parents){
-      return true;
-    }
-    else if(element.parents.includes(person.parents[0]) === person.parents){
-      return true;
-    }
-    else if(element.parents.includes(person.parents[0]) === null ){
-      return false;
-    }
-  })
-  return foundSiblings;
+  let siblings; 
+  if(person.parents != null){
+    for()
+  }
 }
 
     
