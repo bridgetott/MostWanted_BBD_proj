@@ -13,8 +13,8 @@ function app(people){
       mainMenu(searchResults, people)
       break;
     case 'no':
-      // TODO: search by traits 
-      searchResults = searchByTrait(people);
+      let searchTrait = [];
+      searchResults = searchByTrait(people, searchTrait);
       break;
       default:
     app(people); // restart app
@@ -43,14 +43,13 @@ function mainMenu(person, people){
      displayOption(person)
     break;
     case "family":
-      // if(displayOption = "family"){
-      //   parent
-      // }
-    // TODO: get person's family
+      let family = [];
+      findFamily(person, people, family);
+      displayRlatedPeople(family);
     break;
     case "descendants":
-      
-    // TODO: get person's descendants
+      let descendants = [];
+
     break;
     case "restart":
     app(people); // restart
@@ -78,7 +77,7 @@ function searchByName(people){
   return foundPerson;
 }
 
-function searchByTrait(people){
+function searchByTrait(people, traitSearch){
   let gender = promptFor("What is the person's gender?", chars)
   let height = promptFor("What is the person's height?", chars)
 
@@ -121,8 +120,25 @@ function findSiblings(person, people, familiy){
   
   let siblings; 
   if(person.parents != null){
-    for()
+    for(let i = 0; i < person.parents.length; i++){
+      siblings = people.filter(function(different){
+      if(different.parents.includes(person.parents[i]) && different.id !== person.id){
+        return true;
+      }
+      else{
+        return false;
+      }
+      
+    })
   }
+}
+if(siblings != null){
+  for(let i = 0; i < siblings.length; i++){
+    siblings[i].relation = "Sibling";
+    familiy.push(siblings[i]);
+  }
+}
+return family
 }
 
     
