@@ -41,18 +41,9 @@ function mainMenu(person, people){
       displayPerson(person)
     break;
     case "family":
-<<<<<<< HEAD
     var family = [];
     Family(person, people, family);
     displayFamilyMembers(family);
-=======
-      findSiblings(person, people);
-      findSpouse(person, people);
-      // if(displayOption = "family"){
-      //   parent
-      // }
-    // TODO: get person's family
->>>>>>> 73fedd085c4455017abdceb8389e77ff7dbab44c
     break;
     case "descendants":
     var descendants = [];
@@ -85,7 +76,6 @@ function searchByName(people){
   return foundPerson;
 }
 
-<<<<<<< HEAD
 
 function traitsValidate(input){
   return input.toLowerCase() == "height" || input.toLowerCase() == "gender" || input.toLowerCase() == "weight";
@@ -96,16 +86,6 @@ function searchByGender(people, filterGender){
 
   filterGender = people.filter(function(person){
     if(person.gender == gender){
-=======
-function searchByTrait(people){
-  let gender = promptFor("What is the person's gender?", chars)
-  let height = promptFor("What is the person's height?", chars)
-  let height = promptFor("What is the person's eyecolor?", chars)
-  let height = promptFor("What is the person's dob?", chars)
-
-  let foundPerson = people.filter(function(person){
-    if(person.gender === gender && person.height === height && person.eyecolor === eyeColor && person.dob === dob){
->>>>>>> 73fedd085c4455017abdceb8389e77ff7dbab44c
       return true;
     }
     else{
@@ -127,7 +107,6 @@ function searchByHeight(people, filterHeight){
       return false;
     }
   })
-<<<<<<< HEAD
 
   return filterHeight;
 }
@@ -140,19 +119,6 @@ function searchByWeight(people, filterWeight){
       return true;
     }
     else{
-=======
-}
-function findSiblings(person, people){
-  
-  let foundSiblings = person.filter(function(element){
-    if(element.parents.includes(person.parents) && element.parents.includes(person.parents) === people.id){
-      return true;
-    }
-    else if(element.parents.includes(person.parents) === people.id){
-      return true;
-    }
-    else if(element.parents.includes(person.parents) === null ){
->>>>>>> 73fedd085c4455017abdceb8389e77ff7dbab44c
       return false;
     }
   })
