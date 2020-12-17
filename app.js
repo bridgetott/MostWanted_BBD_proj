@@ -13,8 +13,8 @@ function app(people){
       mainMenu(searchResults, people)
       break;
     case 'no':
-      let traitSearch = [];
-      searchResults = traitToSearch(people, traitSearch);      
+      let searchTrait = [];
+      searchResults = traitToSearch(people, searchTrait);      
       infoCheck(searchResults, people);
       break;
       default:
@@ -195,9 +195,9 @@ function Siblings(person, people, family){
 
 function Spouse(person, people, family){
   let spouse;
-   spouse = people.filter(function(other){
+   spouse = people.filter(function(a){
     if(person.currentSpouse != null){
-      if(person.currentSpouse == other.id){
+      if(person.currentSpouse == a.id){
         return true;
       }
       else{
@@ -222,20 +222,20 @@ function Family(person, people, family){
   }
 
 
-function traitToSearch(people, traitSearch){
+function traitToSearch(people, searchTrait){
   let searchType = promptFor("What trait would you like to search by. Type 'gender', 'height', or 'weight'", traitsValidate).toLowerCase();
   switch(searchType){
     case 'gender':
-      traitSearch = searchByGender(people, traitSearch); 
-      return traitSearch;
+      searchTrait = searchByGender(people, searchTrait); 
+      return searchTrait;
       break;
     case 'height':
-      traitSearch = searchByHeight(people, traitSearch);   
-      return traitSearch;
+      searchTrait = searchByHeight(people, searchTrait);   
+      return searchTrait;
       break;
     case 'weight':
-      traitSearch = searchByWeight(people, traitSearch);      
-      return traitSearch;
+      searchTrait = searchByWeight(people, searchTrait);      
+      return searchTrait;
       break;      
     default:
     app(people);
@@ -243,9 +243,9 @@ function traitToSearch(people, traitSearch){
   }
 }
 
-function filterTraits(people, traitSearch){
-  traitSearch = searchByTraits(people, traitSearch)
-  return traitSearch;
+function filterTraits(people, searchTrait){
+  searchTrait = searchByTraits(people, searchTrait)
+  return searchTrait;
 }
 function infoCheck(itemCheck, people){
   if (itemCheck == undefined){
