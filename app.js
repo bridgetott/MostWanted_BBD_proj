@@ -77,16 +77,14 @@ function searchByName(people){
 }
 
 
-
-
 function traitsValidate(input){
   return input.toLowerCase() == "height" || input.toLowerCase() == "gender" || input.toLowerCase() == "weight";
 }
 
-function searchByGender(people, filtered){
+function searchByGender(people, filterGender){
   let gender = promptFor("What is the person's gender?", chars);
 
-  filtered = people.filter(function(person){
+  filterGender = people.filter(function(person){
     if(person.gender == gender){
       return true;
     }
@@ -95,7 +93,7 @@ function searchByGender(people, filtered){
     }
   })
   
-  return filtered;
+  return filterGender;
 }
 
 function searchByHeight(people, filterHeight){
